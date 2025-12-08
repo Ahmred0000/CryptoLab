@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoMaster</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo"><i class="fas fa-shield-alt"></i> CryptoLab</div>
+      <ul class="nav-links" id="menu-list"></ul>
+    </div>
+
+    <div class="main">
+      <div class="card">
+        <div class="card-header">
+          <h2 id="algo-title">Select Algorithm</h2>
+          <span id="algo-badge" class="badge badge-weak">SECURITY</span>
+        </div>
+        <p id="algo-desc" style="color: #888; font-size: 0.9em">
+          Description...
+        </p>
+        <div class="security-bar">
+          <div id="sec-fill" class="security-fill sec-weak"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div id="controls-area"></div>
+
+        <label>Input Text:</label>
+        <textarea
+          id="input-text"
+          rows="3"
+          placeholder="Type your message here..."
+        ></textarea>
+
+        <div class="btn-group">
+          <button class="btn-enc" onclick="process('encrypt')">
+            <i class="fas fa-lock"></i> Encrypt
+          </button>
+          <button class="btn-dec" onclick="process('decrypt')">
+            <i class="fas fa-lock-open"></i> Decrypt
+          </button>
+        </div>
+
+        <div id="visualization-area">
+          <div id="step-info" class="step-info">Waiting for encryption...</div>
+          <div id="playfair-grid" class="playfair-grid"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <label>Result:</label>
+        <textarea
+          id="output-text"
+          rows="3"
+          readonly
+          class="result-box"
+        ></textarea>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
