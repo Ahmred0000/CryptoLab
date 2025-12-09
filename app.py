@@ -164,47 +164,6 @@ def hill_cipher(text, key, mode):
         return res.upper()
     except Exception as e: return f"Hill Error: {e}"
 
-def rotor_machine(text, key, mode):
-    try: off = int(key)
-    except: return "Error: Int Key"
-    res=""
-    for c in text:
-        if c.isalpha():
-            shift = off if mode=='encrypt' else -off
-            base = 65 if c.isupper() else 97
-            res += chr((ord(c)-base+shift)%26 + base)
-            off = (off+1)%26
-        else: res+=c
-    return res
-
-def feistel(text, key, mode):
-    data = [ord(c) for c in text]
-    if len(data)%2!=0: data.append(32)
-    mid = len(data)//2
-    L, R = data[:mid], data[mid:]
-    try: k = int(key)
-    except: k=5
-    
-    def round_func(left, right, k_val):
-        new_r = [l ^ ((r + k_val)%255) for l, r in zip(left, right)]
-        return right, new_r 
-
-    if mode == 'encrypt':
-        for i in range(2):
-            temp = R[:]
-            f = [(x+k)%255 for x in R]
-            R = [l^fx for l,fx in zip(L, f)]
-            L = temp
-        return "".join([chr(x) for x in R+L])
-    else:
-        L, R = R, L
-        for i in range(2):
-            temp = L[:]
-            f = [(x+k)%255 for x in L]
-            L = [r^fx for r,fx in zip(R, f)]
-            R = temp
-        return "".join([chr(x) for x in L+R])
-
 def modern(algo, text, key, mode):
     if not DES: return "Error: Lib Missing"
     try:

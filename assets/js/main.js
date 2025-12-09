@@ -64,20 +64,6 @@ const algos = {
     security: "weak",
     controls: `<label>Key:</label><input type="text" id="key" placeholder="3142">`,
   },
-  "Rotor Machines": {
-    icon: "fa-cog",
-    title: "Rotor Machine",
-    desc: "Mechanical substitution.",
-    security: "medium",
-    controls: `<label>Start Pos:</label><input type="number" id="key" value="5">`,
-  },
-  "Feistel Cipher": {
-    icon: "fa-project-diagram",
-    title: "Feistel Cipher",
-    desc: "Block cipher structure.",
-    security: "medium",
-    controls: `<label>Subkey:</label><input type="number" id="key" value="123">`,
-  },
   DES: {
     icon: "fa-key",
     title: "DES",
@@ -146,9 +132,7 @@ async function process(mode) {
   if (currentAlgo === "Hill Cipher") {
     const inputs = document.querySelectorAll(".hill-k");
     key = Array.from(inputs).map((i) => parseInt(i.value) || 0);
-  } else if (currentAlgo === "Brute Force Attack") {
-    key = 0;
-  } else {
+  }else {
     const kInput = document.getElementById("key");
     key = kInput ? kInput.value : "";
   }
