@@ -212,8 +212,6 @@ def process():
         elif algo == "Rail Fence": res = rail_fence(txt, key, mode)
         elif algo == "Row Transposition": res = row_trans(txt, key, mode); sec="medium"
         elif algo == "Permutation Cipher": res = row_trans(txt, key, mode)
-        elif algo == "Rotor Machines": res = rotor_machine(txt, key, mode); sec="medium"
-        elif algo == "Feistel Cipher": res = feistel(txt, key, mode); sec="medium"
         elif algo == "DES": res = modern('DES', txt, key, mode); sec="medium"
         elif algo == "AES": res = modern('AES', txt, key, mode); sec="strong"
         else: res = "Algorithm Not Found"
