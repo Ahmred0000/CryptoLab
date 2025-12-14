@@ -119,20 +119,53 @@ def vigenere_cipher(text, key, mode):
             ki+=1
         else: res+=c
     return res
-
 def rail_fence(text, key, mode):
-    try: d = int(key)
-    except: return "Error: Int Depth"
-    if d<2: return text
+    try:
+        d = int(key)
+    except:
+        return "Error: Int Depth"
+
+    if d < 2:
+        return text
+
     if mode == 'encrypt':
         fence = [[] for _ in range(d)]
-        rail=0; direct=1
+        rail = 0
+        direct = 1
+
         for c in text:
             fence[rail].append(c)
             rail += direct
-            if rail==d-1 or rail==0: direct = -direct
-        return "".join(["".join(r) for r in fence])
-    return "[Decryption Complex for Demo]"
+            if rail == d - 1 or rail == 0:
+                direct *= -1
+
+        return "".join("".join(r) for r in fence)
+    
+    pattern = []
+    rail = 0
+    direct = 1
+    for _ in text:
+        pattern.append(rail)
+        rail += direct
+        if rail == d - 1 or rail == 0:
+            direct *= -1
+
+    rails_len = [pattern.count(r) for r in range(d)]
+
+    rails = []
+    idx = 0
+    for r_len in rails_len:
+        rails.append(list(text[idx:idx + r_len]))
+        idx += r_len
+
+    result = []
+    rail_indices = [0] * d
+    for r in pattern:
+        result.append(rails[r][rail_indices[r]])
+        rail_indices[r] += 1
+
+    return "".join(result)
+
 
 def row_trans(text, key, mode):
     try: order = [int(k)-1 for k in str(key)]
