@@ -27,7 +27,13 @@ const algos = {
     title: "Hill Cipher",
     desc: "Matrix multiplication.",
     security: "medium",
-    controls: `<label>Key Matrix (2x2):</label><div class="matrix-input"><input type="number" class="hill-k" value="5"><input type="number" class="hill-k" value="8"><input type="number" class="hill-k" value="17"><input type="number" class="hill-k" value="3"></div>`,
+    controls: `<label>Key Matrix (2x2):</label>
+              <div class="matrix-input">
+                <input type="number" class="hill-k" value="5">
+                <input type="number" class="hill-k" value="8">
+                <input type="number" class="hill-k" value="17">
+                <input type="number" class="hill-k" value="3">
+              </div>`,
   },
   "Vigenère Cipher": {
     icon: "fa-italic",
