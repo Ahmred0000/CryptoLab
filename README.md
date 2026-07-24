@@ -99,10 +99,9 @@ It was built to strengthen frontend development skills while integrating externa
 ```text
 CryptoLab/
 │
-├── assets/
 ├── css/
 ├── js/
-├── images/
+├── Mani.py/
 ├── index.html
 └── README.md
 ```
@@ -129,37 +128,7 @@ Open
 index.html
 ```
 
-or use
 
-```bash
-Live Server
-```
-
----
-
-# 📸 Screenshots
-
-## 🏠 Home
-
-```text
-assets/home.png
-```
-
----
-
-## 📊 Dashboard
-
-```text
-assets/dashboard.png
-```
-
----
-
-## 📈 Market View
-
-```text
-assets/market.png
-```
 
 ---
 
